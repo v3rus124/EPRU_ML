@@ -26,6 +26,7 @@ if uploaded_file is not None:
         df["mesic"] = df["Datum"].dt.month 
         df["je_leto"] = df["mesic"].isin([6,7,8])
         df["Topna_sezona"] = df["mesic"].apply(lambda x: 1 if x in [10, 11, 12, 1, 2, 3, 4, 5] else 0)
+        df["sezonost_mesic"] = df["mesic"] * df["Teplota_venkovní"]
         
         df["month_sin"] = np.sin(2 * np.pi * df["mesic"] / 12)
         df["month_cos"] = np.cos(2 * np.pi * df["mesic"] / 12)
